@@ -3,7 +3,6 @@ class EvalNewPassword {
         const requiredChars = [/[A-Z]/, /[a-z]/, /[0-9]/, /[^A-Za-z0-9]/];
         const evalNewPassword = requiredChars.every((required) =>
             required.test(new_password));
-
         return evalNewPassword;
     };
 };
