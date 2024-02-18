@@ -16,7 +16,6 @@ class UsersControllers {
 
     async create(request, response) {
         const { name, email, password } = request.body;
-        console.log(name, email);
         
         const emailExist = await knex("users").where({ email }).first();
         
@@ -26,7 +25,6 @@ class UsersControllers {
         
         const evalNewPassword = new EvalNewPassword;
         const newPasswordEvaluated = evalNewPassword.checkIfPasswordIsValid(password);
-        //console.log(JSON.stringify(newPasswordEvaluated))
 
         if (!newPasswordEvaluated) {
             throw new AppError("A senha não atende os requisitos mínimos.", 401);
